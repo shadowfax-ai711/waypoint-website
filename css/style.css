@@ -48,6 +48,7 @@ body {
   background: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -553,7 +554,72 @@ h1, h2, h3, h4 {
    Services Intro
    ======================================== */
 
-.services-intro-section { padding-bottom: 80px; }
+.services-intro-section {
+  padding-bottom: 80px;
+  position: relative;
+}
+
+.services-intro-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+#services-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+}
+
+/* Section ambient orbs */
+.section-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+}
+
+.so-1 {
+  width: 1100px; height: 1100px;
+  background: radial-gradient(circle, rgba(18,55,110,0.32) 0%, transparent 70%);
+  top: -200px; right: -5%;
+  animation: slowFloat1 48s ease-in-out infinite;
+}
+
+.so-2 {
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(12,28,78,0.26) 0%, transparent 70%);
+  bottom: -300px; left: -5%;
+  animation: slowFloat2 60s ease-in-out infinite;
+}
+
+.so-3 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(40,15,80,0.2) 0%, transparent 70%);
+  top: 30%; left: 35%;
+  animation: slowFloat3 38s ease-in-out infinite;
+}
+
+@keyframes slowFloat1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(-100px, 80px) scale(1.07); }
+  66%     { transform: translate(70px, -50px) scale(0.94); }
+}
+@keyframes slowFloat2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  40%     { transform: translate(120px, -80px) scale(1.05); }
+  70%     { transform: translate(-60px, 60px) scale(0.96); }
+}
+@keyframes slowFloat3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%     { transform: translate(-80px, -100px) scale(1.1); }
+}
 
 .services-lead {
   font-size: clamp(1.6rem, 3vw, 2.4rem);

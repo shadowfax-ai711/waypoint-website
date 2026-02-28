@@ -45,6 +45,12 @@
 
   <!-- Services Intro -->
   <section class="section services-intro-section">
+    <canvas id="services-canvas"></canvas>
+    <div class="section-orbs">
+      <div class="section-orb so-1"></div>
+      <div class="section-orb so-2"></div>
+      <div class="section-orb so-3"></div>
+    </div>
     <div class="container">
 
       <p class="services-lead fade-in">We help owner-operators run disciplined, financially strong facilities that deliver better patient care.</p>
@@ -132,5 +138,51 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var canvas = document.getElementById('services-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var section = canvas.closest('.services-intro-section');
+      var W, H, dots = [];
+      var NDOTS = 90;
+
+      function init() {
+        W = canvas.width  = section.offsetWidth;
+        H = canvas.height = section.offsetHeight;
+        dots = [];
+        for (var i = 0; i < NDOTS; i++) {
+          dots.push({
+            x:  Math.random() * W,
+            y:  Math.random() * H,
+            vx: (Math.random() - 0.5) * 0.28,
+            vy: (Math.random() - 0.5) * 0.28,
+            r:  Math.random() * 1.4 + 0.4,
+            a:  Math.random() * 0.2 + 0.06,
+          });
+        }
+      }
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < dots.length; i++) {
+          var d = dots[i];
+          var spd = Math.sqrt(d.vx*d.vx + d.vy*d.vy);
+          if (spd > 0.7) { d.vx *= 0.96; d.vy *= 0.96; }
+          d.x += d.vx; d.y += d.vy;
+          if (d.x < 0) d.x = W; if (d.x > W) d.x = 0;
+          if (d.y < 0) d.y = H; if (d.y > H) d.y = 0;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255,255,255,' + d.a + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(tick);
+      }
+
+      window.addEventListener('load', function () { init(); requestAnimationFrame(tick); });
+      window.addEventListener('resize', init);
+    })();
+  </script>
 </body>
 </html>
