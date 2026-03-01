@@ -1035,10 +1035,19 @@ h1, h2, h3, h4 {
 
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid  { grid-template-columns: 1fr 1fr; }
-  .stats-row    { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+
+  /* Services */
+  .sc-process-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* About */
+  .about-split { grid-template-columns: 1fr; gap: 48px; }
+
+  /* Services intro */
+  .services-intro { grid-template-columns: 1fr; gap: 40px; }
 }
 
 @media (max-width: 768px) {
+  /* Nav */
   .nav-links {
     display: none;
     position: absolute;
@@ -1055,14 +1064,55 @@ h1, h2, h3, h4 {
   .nav-links .btn-nav { margin-left: 0; margin-top: 8px; text-align: center; }
   .nav-toggle { display: block; }
 
+  /* Hero */
   .hero { min-height: 92vh; }
-  .hero h1 { font-size: 3rem; }
+  .hero h1 { font-size: 2.6rem; }
   .hero-content { padding: 60px 0 80px; }
+  .hero p { font-size: 1rem; }
   .btn-group { flex-direction: column; align-items: center; }
+  .hero-page .hero-content { padding: 60px 0 40px; }
 
+  /* Sections */
   .grid-2    { grid-template-columns: 1fr; }
-  .section   { padding: 80px 0; }
+  .section   { padding: 64px 0; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .form-row  { grid-template-columns: 1fr; }
-  .stats-row { grid-template-columns: 1fr 1fr; }
+
+  /* Cards */
+  .card { padding: 28px; }
+  .flip-card { height: auto; min-height: 200px; }
+  .contact-info-card { padding: 28px; }
+  .form-card { padding: 28px; }
+
+  /* Services */
+  .services-lead { font-size: 1.4rem; }
+  .services-cards { grid-template-columns: 1fr; }
+  .sc-half, .sc-full, .sc-process { grid-column: span 1; }
+  .sc-half, .sc-process, .sc-full { padding: 28px 24px; }
+  .sc-process-grid { grid-template-columns: 1fr; }
+  .sc-process-item { padding: 24px; }
+
+  /* CTA */
+  .cta-section { padding: 64px 0; }
+  .cta-section h2 { font-size: 1.6rem; }
+
+  /* Team */
+  .hero-team { padding-bottom: 64px; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* Testimonials */
+  .testimonial-card { padding: 28px; }
+
+  /* Footer */
+  .footer { padding: 40px 0 20px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 2rem; }
+  .services-lead { font-size: 1.2rem; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .sc-half p, .sc-full p { font-size: 1rem; }
+  .sc-process-item p { font-size: 0.95rem; }
+  .section { padding: 48px 0; }
 }
