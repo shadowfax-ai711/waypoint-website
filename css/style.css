@@ -406,7 +406,8 @@ h1, h2, h3, h4 {
   transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner { transform: none; }
+.flip-card:hover .flip-card-inner { transform: translateY(-6px); }
+.flip-card:hover .flip-card-front { border-color: rgba(255,255,255,0.18); background: var(--color-bg-hover); }
 
 .flip-card-front,
 .flip-card-back {
